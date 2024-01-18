@@ -1,0 +1,60 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Hangman</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'css/hangman.css' %}">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=FontName&display=swap">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
+    <style>
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <svg xmlns="http://www.w3.org/2000/svg" id="stickFigure" viewBox="0 0 100 130" width="100" height="130">
+
+            <line x1="10" y1="10" x2="80" y2="10" stroke="#000" stroke-width="7" />
+            <line x1="20" y1="0" x2="20" y2="130" stroke="#000" stroke-width="7" /> 
+        </svg>
+
+    </div>
+    <script>
+        document.getElementById("characterInput").addEventListener("keyup", function (event) {
+            if (event.key === "Enter") {
+                event.preventDefault(); 
+                document.getElementById("hangmanForm").submit();
+            }
+        });
+    </script>
+    <header>
+        Hangman
+    </header>
+    <article>
+        {% if context %}
+        <div class="big-bold-characters">
+            {% for char in context.currentAnswer %}
+            <span>{{ char }}</span>
+            {% endfor %}
+        </div>
+        <form id="hangmanForm" action="{% url 'update_session' %}" method="post">
+            {% csrf_token %}
+            <input type="hidden" name="uuid" value="{{ context.sessionId }}">
+            <input type="text" id="characterInput" name="characterInput" required maxlength="1">
+            <!-- <button type="submit">Submit</button> -->
+        </form>
+        {% elif error_message %}
+        <p>{{ error_message }}</p>
+        {% endif %}
+    </article>
+
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="{% static 'scripts/updateContext.js' %}"></script>
+
+</body>
+
+</html>

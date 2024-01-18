@@ -1,0 +1,113 @@
+header {
+    font-family: 'Quicksand', cursive;
+    color: #0039a6;
+    position: absolute;
+    top: 10%;
+    transform: translateY(-25%);
+    text-align: center;
+    font-size: 4vw;
+    font-weight: normal;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background: url('/static/images/notepad_desk.jpg') no-repeat center center fixed;
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+.big-bold-characters {
+    justify-content: center;
+    align-items: center;
+    font-size: 4vw;
+    font-weight: bold;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.big-bold-characters span {
+    font-weight: bold;
+    margin: 0 0.2vw;
+}
+
+.message {
+    font-family: 'Quicksand'    , sans-serif;
+    font-size: 1vw;
+    text-align: center;
+    /* padding: 15px; */
+    margin: 0;
+    position: fixed;
+    top: 85%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #4caf50;
+    /* Green for win messages */
+    color: #ffffff;
+    /* White text */
+    /* border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); */
+}
+
+.message.win {
+    background-color: #4caf50;
+    /* Green for win messages */
+}
+
+.message.lose {
+    background-color: #dc143c;
+    /* Red for lose messages */
+}
+
+#stickFigure {
+    position: absolute;
+    top: 25%;
+    /* Set the top position to 25% of the viewport height */
+    left: 50%;
+    /* Center horizontally */
+    transform: translateX(-50%);
+    /* Adjust for centering */
+    width: 200px;
+    color: black;
+}
+
+#stickFigure circle,
+#stickFigure line {
+    fill: black;
+    stroke: black;
+}
+
+#hangmanForm {
+    position: absolute;
+    top: 65%;
+    /* Set the top position to 25% of the viewport height */
+    left: 50%;
+    /* Center horizontally */
+    transform: translateX(-50%);
+    justify-content: center;
+    align-items: center;
+}
+  
+  input[type="text"] {
+    width: 3vw;
+    font-size: 2vw;
+    /* left: 50%;
+    /* Center horizontally */
+    /* transform: translateX(-50%); */
+    /* justify-content: center; */
+    /* align-items: center; */ 
+  }
+  
+  /* Add styling for focus state if needed */
+  input[type="text"]:focus {
+    outline: none; /* Remove default focus outline */
+    border-color: #4CAF50; /* Set border color when focused */
+    box-shadow: 0 0 5px rgba(76, 175, 80, 0.7); /* Optional: Add a subtle box-shadow when focused */
+  }
+  
