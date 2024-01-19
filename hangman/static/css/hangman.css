@@ -1,5 +1,10 @@
+@font-face {
+    font-family: 'Ink';
+    src: url('/static/font/ink.ttf') format('truetype');
+  }
+
 header {
-    font-family: 'Quicksand', cursive;
+    font-family: 'Ink', cursive;
     color: #0039a6;
     position: absolute;
     top: 10%;

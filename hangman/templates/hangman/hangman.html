@@ -45,7 +45,6 @@
             {% csrf_token %}
             <input type="hidden" name="uuid" value="{{ context.sessionId }}">
             <input type="text" id="characterInput" name="characterInput" required maxlength="1">
-            <!-- <button type="submit">Submit</button> -->
         </form>
         {% elif error_message %}
         <p>{{ error_message }}</p>
