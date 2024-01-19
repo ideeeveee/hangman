@@ -77,10 +77,9 @@ class AttemptResponse:
         pass
 
     def __str__(self):
-        match self.result:
-            case Result.IN_PROGRESS:
-                return f"You have {self.attemptsLeft} attempts left"
-            case Result.WIN:
-                return f"You won!"
-            case Result.LOSE:
-                return f"The answer is {self.answer}"
+        if self.result == Result.IN_PROGRESS:
+            return f"You have {self.attemptsLeft} attempts left"
+        elif self.result == Result.WIN:
+            return f"You won!"
+        elif self.result == Result.LOSE:
+            return f"The answer is {self.answer}"
