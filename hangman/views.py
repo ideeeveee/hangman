@@ -14,7 +14,7 @@ def updateSession(request):
     character_input = request.POST.get('characterInput', None)
     if uuid_value:
         entry = get_object_or_404(HangmanModel, sessionId=uuid_value)
-        entry.update(character_input)
+        entry.update(character_input.lower())
         if(entry.result == 'IN_PROGRESS'):
             return JsonResponse({'currentAnswer': entry.currentAnswer, 'result': entry.result, 'attempts': entry.numberOfAttempts})
         else:

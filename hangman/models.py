@@ -1,10 +1,8 @@
 from django.conf import settings
 from django.db import models
-from django.utils import timezone
 from uuid import uuid4
 
-import requests
-import random
+from hangman.utils import HangmanUtil
 
 class Result(models.TextChoices):
     IN_PROGRESS = 'IN_PROGRESS'
@@ -49,24 +47,6 @@ class HangmanModel(models.Model):
             return AttemptResponse(self.result, self.currentAnswer, self.maxNumberOfAttempts-self.numberOfAttempts, self.answer)
         self.save()
         return AttemptResponse(self.result, self.currentAnswer, self.maxNumberOfAttempts-self.numberOfAttempts)
-
-class HangmanUtil():
-    def generateRandomWord():
-        word_site = "https://www.mit.edu/~ecprice/wordlist.10000"
-        response = requests.get(word_site)
-        WORDS = response.content.splitlines()
-
-        genFlag = True
-        while genFlag:
-            answer = random.choice(WORDS).decode("utf-8")
-            genFlag =  (" " in answer) | (len(answer) < 7) | (len(answer) > 10)
-        return answer
-    
-    def setInitAnswer(length):
-        attemptAnswer = ""
-        for i in range(length):
-            attemptAnswer += "_"
-        return attemptAnswer
 
 class AttemptResponse:
     def __init__(self, result, currentAnswer, attemptsLeft, answer=''):
